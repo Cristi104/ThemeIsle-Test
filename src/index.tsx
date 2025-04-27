@@ -17,6 +17,9 @@ seedDatabase(db, {
 	clearExisting: true,
 });
 
+if(!process.env.JWT_SECRET)
+	throw new Error("JWT_SECRET is not set, please assign it a value inside .env");
+
 function validateEmail(email: string): boolean {
 	return !!email.match(
 		/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
